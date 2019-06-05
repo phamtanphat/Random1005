@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mangso.clear();
                 String somin = edtSomin.getText().toString().trim();
                 String somax = edtSomax.getText().toString().trim();
 
@@ -48,9 +49,15 @@ public class MainActivity extends AppCompatActivity {
                     int smax = Integer.parseInt(somax);
                     if(smax <= smin){
                         smax = smin + 1;
-                        edtSomax.setText(smax + "");
-                        edtSomin.setText(smin + "");
                     }
+                    for (int i = smin ; i<= smax ; i++){
+                        mangso.add(i);
+                    }
+                    Toast.makeText(MainActivity.this, mangso.size() + "", Toast.LENGTH_SHORT).show();
+
+                    edtSomax.setText(smax + "");
+                    edtSomin.setText(smin + "");
+
                 }else{
                     Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();
                 }
