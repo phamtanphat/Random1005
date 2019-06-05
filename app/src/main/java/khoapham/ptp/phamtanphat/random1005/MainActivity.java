@@ -69,7 +69,12 @@ public class MainActivity extends AppCompatActivity {
                 Random random = new Random();
                 if (mangso.size() >0){
                     int index = random.nextInt(mangso.size());
-                    ketqua += mangso.get(index) + " - ";
+                    if (mangso.size() == 1){
+                        ketqua += mangso.get(index) +"";
+                    }else{
+                        ketqua += mangso.get(index) + " - ";
+                    }
+//                    ketqua += mangso.size() == 1 ? mangso.get(index) +"" :  mangso.get(index) + " - ";;
                     txtKetqua.setText(ketqua);
                     mangso.remove(index);
                 }else{
