@@ -59,27 +59,32 @@ public class MainActivity extends AppCompatActivity {
                     edtSomax.setText(smax + "");
                     edtSomin.setText(smin + "");
                 }else{
-                    Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Them gia tri vao cho o trong!!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
         btnRandom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Random random = new Random();
-                if (mangso.size() >0){
-                    int index = random.nextInt(mangso.size());
-                    if (mangso.size() == 1){
-                        ketqua += mangso.get(index) +"";
-                    }else{
-                        ketqua += mangso.get(index) + " - ";
-                    }
+                if (mangso.size() > 0){
+                    Random random = new Random();
+                    if (mangso.size() >0){
+                        int index = random.nextInt(mangso.size());
+                        if (mangso.size() == 1){
+                            ketqua += mangso.get(index) +"";
+                        }else{
+                            ketqua += mangso.get(index) + " - ";
+                        }
 //                    ketqua += mangso.size() == 1 ? mangso.get(index) +"" :  mangso.get(index) + " - ";;
-                    txtKetqua.setText(ketqua);
-                    mangso.remove(index);
+                        txtKetqua.setText(ketqua);
+                        mangso.remove(index);
+                    }else{
+                        Toast.makeText(MainActivity.this, "Het gia tri random", Toast.LENGTH_SHORT).show();
+                    }
                 }else{
-                    Toast.makeText(MainActivity.this, "Het gia tri random", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Them gia tri de random", Toast.LENGTH_SHORT).show();
                 }
+
 
             }
         });
