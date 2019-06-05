@@ -14,11 +14,21 @@ public class MainActivity extends AppCompatActivity {
 
     Button btnRandom;
     ArrayList<Integer> mangso = new ArrayList<>(Arrays.asList(11,12,13,14,15,16,17,18,19,20));
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        // Kiem tra so min , so max
+//            + So max khong duoc nho so min (somax = smin  + 1)
+//            + Phai truyen vao la so (khong cho truyen cho chuoi)
+//            + Không bỏ trống số min hoặc max (nếu trống 1 or 2 thông báo cho người dùng điền vào)
+        //Xử lý random
+//            +Không có nào random trùng với nhau
+//            +Khi random hết số thông báo cho người dùng biết
+        //Hiển thị
+//            + Điều kiện hiển thị 1 : 1-2-3-4-5-6-1-
+//            + Điều kiện hiển thị 2 : 1-2-3-4-5-6-7
         btnRandom = findViewById(R.id.buttonRandom);
 
         btnRandom.setOnClickListener(new View.OnClickListener() {
@@ -33,15 +43,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        // Kiem tra so min , so max
-//            + So max khong duoc nho so min (somax = smin  + 1)
-//            + Phai truyen vao la so (khong cho truyen cho chuoi)
-//            + Không bỏ trống số min hoặc max (nếu trống 1 or 2 thông báo cho người dùng điền vào)
-        //Xử lý random
-//            +Không có nào random trùng với nhau
-//            +Khi random hết số thông báo cho người dùng biết
-        //Hiển thị
-//            + Điều kiện hiển thị 1 : 1-2-3-4-5-6-1-
-//            + Điều kiện hiển thị 2 : 1-2-3-4-5-6-7
+
     }
 }
