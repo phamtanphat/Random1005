@@ -63,15 +63,18 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
         btnRandom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Random random = new Random();
-                int index = random.nextInt(mangso.size());
-                ketqua += mangso.get(index) + " - ";
-                txtKetqua.setText(ketqua);
-                mangso.remove(index);
+                if (mangso.size() >0){
+                    int index = random.nextInt(mangso.size());
+                    ketqua += mangso.get(index) + " - ";
+                    txtKetqua.setText(ketqua);
+                    mangso.remove(index);
+                }else{
+                    Toast.makeText(MainActivity.this, "Het gia tri random", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
