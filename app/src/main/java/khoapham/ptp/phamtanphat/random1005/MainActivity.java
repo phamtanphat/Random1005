@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,8 +14,9 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnRandom;
-    ArrayList<Integer> mangso = new ArrayList<>(Arrays.asList(11,12,13,14,15,16,17,18,19,20));
+    Button btnRandom , btnAdd;
+    EditText edtSomin,edtSomax;
+    ArrayList<Integer> mangso = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +32,32 @@ public class MainActivity extends AppCompatActivity {
         //Hiển thị
 //            + Điều kiện hiển thị 1 : 1-2-3-4-5-6-1-
 //            + Điều kiện hiển thị 2 : 1-2-3-4-5-6-7
+        btnAdd = findViewById(R.id.buttonAdd);
         btnRandom = findViewById(R.id.buttonRandom);
+        edtSomax = findViewById(R.id.edtittextSomax);
+        edtSomin = findViewById(R.id.edtittextSomin);
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String somin = edtSomin.getText().toString().trim();
+                String somax = edtSomax.getText().toString().trim();
+
+                if (somin.length() > 0 && somax.length() > 0){
+                    int smin = Integer.parseInt(somin);
+                    int smax = Integer.parseInt(somax);
+                    if(smax <= smin){
+                        smax = smin + 1;
+                        edtSomax.setText(smax + "");
+                        edtSomin.setText(smin + "");
+                    }
+                }else{
+                    Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        });
 
         btnRandom.setOnClickListener(new View.OnClickListener() {
             @Override
