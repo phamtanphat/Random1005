@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -16,8 +17,9 @@ public class MainActivity extends AppCompatActivity {
 
     Button btnRandom , btnAdd;
     EditText edtSomin,edtSomax;
+    TextView txtKetqua;
     ArrayList<Integer> mangso = new ArrayList<>();
-
+    String ketqua = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         btnRandom = findViewById(R.id.buttonRandom);
         edtSomax = findViewById(R.id.edtittextSomax);
         edtSomin = findViewById(R.id.edtittextSomin);
+        txtKetqua = findViewById(R.id.textviewKetqua);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,16 +56,11 @@ public class MainActivity extends AppCompatActivity {
                     for (int i = smin ; i<= smax ; i++){
                         mangso.add(i);
                     }
-                    Toast.makeText(MainActivity.this, mangso.size() + "", Toast.LENGTH_SHORT).show();
-
                     edtSomax.setText(smax + "");
                     edtSomin.setText(smin + "");
-
                 }else{
                     Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();
                 }
-
-
             }
         });
 
@@ -71,11 +69,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Random random = new Random();
                 int index = random.nextInt(mangso.size());
-                Log.d("BBB",index + "");
+                ketqua += mangso.get(index) + " - ";
+                txtKetqua.setText(ketqua);
                 mangso.remove(index);
-                for (int i = 0 ; i<mangso.size() ; i++){
-                    Log.d("BBB","Sau khi xoa " + mangso.get(i) + " , index " + i);
-                }
+
             }
         });
 
